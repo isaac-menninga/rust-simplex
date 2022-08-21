@@ -1,10 +1,6 @@
+use crate::helpers::*;
 use std::f64::INFINITY;
 
-use crate::helpers::*;
-
-// input is objective function
-// methods for adding constraints
-// method for has_solution
 pub struct Tableau {
     pub objective: Vec<f64>,
     pub constraints: Vec<Vec<f64>>,
@@ -23,14 +19,13 @@ impl Tableau {
 
         let mut o_slack = vec![];
 
+        // add zeros for slack variables
         for _ in 0..n_cons {
             o_slack.push(0.0);
         }
 
-        // add zeros for slack variables
-        o_slack.push(1.0);
-
         // 1 coeff for z, 0 for value
+        o_slack.push(1.0);
         o_slack.push(0.0);
 
         for i in 0..o.len() {
