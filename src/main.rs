@@ -1,3 +1,4 @@
+mod helpers;
 mod tableau;
 use crate::tableau::*;
 
@@ -9,4 +10,11 @@ fn main() {
     t.push(vec![1.0, 1.0, 4.0], 6.0);
 
     t.print();
+    t.solve();
+
+    println!("solution: ");
+    for (i, v) in t.solution.iter().enumerate() {
+        print!("x{i} = {}, ", v)
+    }
+    print!("value = {}", t.objective.last().unwrap());
 }
